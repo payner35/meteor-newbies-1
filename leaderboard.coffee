@@ -79,13 +79,6 @@ if Meteor.is_client
 			Meteor.defer -> $('[rel=tooltip]').tooltip()
 			return
 
-###		
-	Template.player.selected = ->
-		#set the selected player in session
-		if Session.equals("selected_player", this._id) then "selected" else ''
-		
-###
-
 if Meteor.is_server
 	Meteor.startup ->
 		if Players.find().count() is 0
