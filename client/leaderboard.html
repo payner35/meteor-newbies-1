@@ -1,0 +1,81 @@
+<head>
+  <title>Leaderboard</title>
+  <link rel="shortcut icon" href="/img/favicon.ico">
+</head>
+
+<body>
+  	<div class="navbar navbar-fixed-top">
+	    <div class="navbar-inner">
+	      <div class="container">
+	        {{> navbar}}
+	      </div>
+	    </div>
+	</div>
+  <div class="container">
+    {{> leaderboard}}
+  </div>
+</body>
+
+<template name="navbar">
+        <a class="brand" href="#">Leaderboard</a>
+        <ul class="nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Actions<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="sort_by_name"><a href="#">Sort by Name</a></li>
+              <li><a class="sort_by_score" href="#">Sort by Score</a></li>
+              <li class="divider"></li>
+              <li class="reset_data"><a href="#">Reset Data</a></li>
+            </ul>
+          </li>
+          <li><a href="https://github.com/srackham/leaderboard-coffeescript">Github</a></li>
+          <li><a href="http://meteor.com/examples/leaderboard">About</a></li>
+        </ul>
+</template>
+
+
+
+<template name="leaderboard">
+  <div class="input-append">
+    <input id="player_name" type="text" placeholder="New player"/>
+    <button id="add_button" class="add_user btn" type="button">Add Player</button>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Score</th>
+        <th style="width: 20px"></th>
+        <th style="width: 20px"></th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each players}}
+      {{> player}}
+    {{/each}}
+    </tbody>
+  </table>
+
+  {{#if selected_name}}
+  <div class="details">
+    <div class="name">{{selected_name}}</div>
+  </div>
+  {{/if}}
+
+  {{#unless selected_name}}
+  <div class="none">Click a player to select</div>
+  {{/unless}}
+</template>
+
+<template name="player">
+  <tr class="player">
+    <td class="name">{{name}}</td>
+    <td class="score">{{score}}</td>
+    <td><i class="increment icon-heart" rel="tooltip" data-original-title="Add five points to the score"></i></td>
+    <td><i class="remove icon-remove" rel="tooltip" data-original-title="Delete player"></i></td>
+  </tr>
+{{enable_tooltips}}
+</template>
+
+
+
