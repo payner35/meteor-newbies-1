@@ -73,7 +73,8 @@ if Meteor.is_client
 				return
 			'click': ->
 				Session.set("selected_player", @_id)
-
+		
+		#i have disabled this as tooltips are bad on mobile devices
 		enable_tooltips: ->
     		# Update tooltips after the template has rendered.
 			Meteor.defer -> $('[rel=tooltip]').tooltip()
